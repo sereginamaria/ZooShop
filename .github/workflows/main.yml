@@ -24,7 +24,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: add fingerpring
-        run: echo $TOKEN >> /.ssh/authorized_keys
+        run: echo $TOKEN > /.ssh/authorized_keys
 
       - name: run ssh
         run: ssh -o "StrictHostKeyChecking=no" -T Maria@54.85.9.45 "bash -c '$BUILD_SH'"
