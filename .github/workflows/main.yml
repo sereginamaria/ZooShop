@@ -23,11 +23,11 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: add fingerpring
-        run: |
-          mkdir -p ~/.ssh/
-          echo $TOKEN > ~/.ssh/authorized_keys
-          sudo chmod 600 ~/.ssh/authorized_keys
+#      - name: add fingerpring
+#        run: |
+#          mkdir -p ~/.ssh/
+#          echo $TOKEN > ~/.ssh/authorized_keys
+#          sudo chmod 600 ~/.ssh/authorized_keys
 
       - name: run ssh
-        run: sudo ssh -o "StrictHostKeyChecking=no" -T Maria@54.85.9.45 "bash -c '$BUILD_SH'"
+        run: ssh $TOKEN -o "StrictHostKeyChecking=no"  -T Maria@54.85.9.45 "bash -c '$BUILD_SH'"
