@@ -57,3 +57,12 @@ def birds_acc(request):
     return render(request, '../templates/web/birds_acc.html')
 
 
+def login(request):
+    return render(request, '../templates/web/login.html')
+
+
+def registration(request):
+    return render(request, '../templates/web/registration.html')
+
+
+
