@@ -24,9 +24,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: SSH Remote Commands
-          uses: appleboy/ssh-action@v0.1.3
-          with:
-            host: 54.85.9.45
-            username: Maria
-            key: ${{ secrets.TOKEN }}
-            script: whoami
+        uses: appleboy/ssh-action@v0.1.3
+        with:
+          host: 54.85.9.45
+          username: Maria
+          key: ${{ secrets.TOKEN }}
+          script: whoami
