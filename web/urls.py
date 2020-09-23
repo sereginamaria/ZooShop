@@ -19,5 +19,6 @@ urlpatterns = [
     path('birds_feed', views.birds_feed, name='birds_feed'),
     path('birds_acc', views.birds_acc, name='birds_acc'),
     path('login', views.login, name='login'),
-    path('registration', views.registration, name="registration")
+    path('registration', views.registration, name="registration"),
+    path('card', views.card, name='card')
 ]
