@@ -96,7 +96,6 @@ ol.breadcrumb li.active{
 i.arrow{
 	width:22px;
 	height:22px;
-	background: url('../images/img-sprite.png') no-repeat 0px -30px;
 	display:inline-block;
 	cursor:pointer;
 	vertical-align: middle;
@@ -381,7 +380,6 @@ span.item_price{
 }
 /*----*/
 .products{
-	background:url(../images/banner2.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size: cover;
 -moz-background-size: cover;
@@ -2040,7 +2038,6 @@ h3.lorem{
 	padding:4em 0;
 }
 .cart-list li {
-	list-style-image: url(../images/icon2.png);
 	margin-left: 20px;
 	margin-bottom: 10px;
 }
@@ -3746,4 +3743,4 @@ a.order {
 }
 ul.place li {
   font-size: 0.85em;
-}
+}}
