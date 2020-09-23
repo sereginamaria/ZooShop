@@ -20,5 +20,5 @@ urlpatterns = [
     path('birds_acc', views.birds_acc, name='birds_acc'),
     path('login', views.login, name='login'),
     path('registration', views.registration, name="registration"),
-    path('card', views.card, name='card')
+    path('cart/', views.cart, name='card')
 ]

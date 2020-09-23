@@ -65,5 +65,5 @@ def registration(request):
     return render(request, 'web/registration.html')
 
 
-def card():
-    return render(request, 'web/card.html')
+def cart(request):
+    return render(request, 'web/cart.html')
