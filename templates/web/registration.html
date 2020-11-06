@@ -113,33 +113,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 <h2>Регистрация</h2>
 		 <div class="col-md-6 reg-form">
 			 <div class="reg">
-
-				 <form>
+				 <form action="{% url 'web:signup' %}" method="post">
+					 {% csrf_token %}
 					 <ul>
 						 <li class="text-info">Имя: </li>
-						 <li><input type="text" value=""></li>
+						 <li><input type="text" value="" name="name"></li>
 					 </ul>
 					 <ul>
 						 <li class="text-info">Фамилия: </li>
-						 <li><input type="text" value=""></li>
+						 <li><input type="text" value="" name="surname"></li>
 					 </ul>				 
 					<ul>
 						 <li class="text-info">Email: </li>
-						 <li><input type="text" value=""></li>
+						 <li><input type="text" value="" name="email"></li>
 					 </ul>
 					 <ul>
 						 <li class="text-info">Пароль: </li>
-						 <li><input type="password" value=""></li>
+						 <li><input type="password" value="" name="password"></li>
 					 </ul>
 					 <ul>
 						 <li class="text-info">Повторите пароль:</li>
-						 <li><input type="password" value=""></li>
+						 <li><input type="password" value="" name="repeat_password"></li>
 					 </ul>
 					 <ul>
 						 <li class="text-info">Телефон:</li>
-						 <li><input type="text" value=""></li>
+						 <li><input type="text" value="" name="phone"></li>
 					 </ul>						
-					 <input type="submit" value="Зарегистрироватья">
+					 <input type="submit" value="Зарегистрироваться">
 					 <p class="click">Нажимая эту кнопку, вы соглашаетесь с <a href="#">Политикой Конфеденциальности</a></p>
 				 </form>
 			 </div>

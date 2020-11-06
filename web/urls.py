@@ -2,7 +2,6 @@ from django.urls import path
 
 from . import views
 
-app_name = 'web'
 urlpatterns = [
     path('hello/', views.hello_world, name='hello'),
     path('', views.index, name='index'),
@@ -19,5 +18,7 @@ urlpatterns = [
     path('birds_acc', views.birds_acc, name='birds_acc'),
     path('login', views.login, name='login'),
     path('registration', views.registration, name="registration"),
-    path('cart/', views.cart, name='cart')
+    path('cart/', views.cart, name='cart'),
+    path('signup/', views.signup, name='signup')
 ]
+app_name = 'web'

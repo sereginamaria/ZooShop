@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from web.forms import UserRegister
 
 # Create your views here.
 
@@ -67,3 +68,11 @@ def registration(request):
 
 def cart(request):
     return render(request, 'web/cart.html')
+
+
+def signup(request):
+    if request.method == 'POST':
+        registration_form = UserRegister(request)
+        return HttpResponse(registration_form.is_valid())
+    else:
+        return redirect('web:registration')
