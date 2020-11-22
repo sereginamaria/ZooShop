@@ -1,78 +1,182 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from web.forms import UserRegister
-
-# Create your views here.
-
-
-def hello_world(request):
-    return HttpResponse('Hello, world!')
+from django.contrib.auth import authenticate, login as log_in, logout as log_out
+from django.db.models import Q
+from web.models import Client, Item
+from mysite.settings import BASE_DIR
+import random
+import os
 
 
 def index(request):
-    return render(request, 'web/index.html')
+    # limit 10
+    items = Item.objects.all().filter(~Q(amount=0))[:6]
+
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username,
+               'items': items}
+    return render(request, 'web/index.html', context=context)
 
 
 def about(request):
-    return render(request, 'web/about.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/about.html', context=context)
 
 
 def ourshops(request):
-    return render(request, 'web/ourshops.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/ourshops.html', context=context)
 
 
 def cats_toys(request):
-    return render(request, 'web/cats_toys.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/cats_toys.html', context=context)
 
 
 def cats_feed(request):
-    return render(request, 'web/cats_feed.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/cats_feed.html', context=context)
 
 
 def cats_acc(request):
-    return render(request, 'web/cats_acc.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/cats_acc.html', context=context)
 
 
 def dogs_toys(request):
-    return render(request, 'web/dogs_toys.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/dogs_toys.html', context=context)
 
 
 def dogs_feed(request):
-    return render(request, 'web/dogs_feed.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/dogs_feed.html', context=context)
 
 
 def dogs_acc(request):
-    return render(request, 'web/dogs_acc.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/dogs_acc.html', context=context)
 
 
 def birds_toys(request):
-    return render(request, 'web/birds_toys.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/birds_toys.html', context=context)
 
 
 def birds_feed(request):
-    return render(request, 'web/birds_feed.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/birds_feed.html', context=context)
 
 
 def birds_acc(request):
-    return render(request, 'web/birds_acc.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/birds_acc.html', context=context)
 
 
 def login(request):
-    return render(request, 'web/login.html')
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            log_in(request, user)
+            return redirect('web:index')
+        return render(request, 'web/login.html')
+    else:
+        return render(request, 'web/login.html')
+
+
+def logout(request):
+    log_out(request)
+    return redirect(request.META.get('HTTP_REFERER'))
 
 
 def registration(request):
-    return render(request, 'web/registration.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/registration.html', context=context)
 
 
 def cart(request):
-    return render(request, 'web/cart.html')
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/cart.html', context=context)
 
 
 def signup(request):
     if request.method == 'POST':
-        registration_form = UserRegister(request)
-        return HttpResponse(registration_form.is_valid())
+        post = request.POST
+        username = post['name']
+        password = post['password']
+        email = post['email']
+        last_name = post['surname']
+        phone = post['phone']
+        user = Client.objects.create_user(username, email, password,
+                                          last_name=last_name, phone=phone)
+        log_in(request, user)
+        return redirect('web:index')
     else:
         return redirect('web:registration')
+
+
+def products(request):
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+
+    context = {'username': username}
+    return render(request, 'web/products.html', context=context)

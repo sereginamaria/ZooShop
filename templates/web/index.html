@@ -21,6 +21,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		/>
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/simpleCart.min.js' %}"> </script>
+<script src="{% static 'js/setCookies.js' %}"> </script>
 <!-- start menu -->
 <link href="{% static 'css/megamenu.css' %}" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="{% static 'js/megamenu.js' %}"></script>
@@ -33,7 +34,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 <div class="container">
 	     <div class="main-header">
 			  <div class="carting">
-				 <ul><li><a href="{% url 'web:login' %} "> LOGIN</a></li></ul>
+				 <ul>
+					 <li>
+						 {% if not username %}
+						 	<a href="{% url 'web:login' %} "> LOGIN</a>
+						 {% else %}
+						 	<a>{{ username }}</a>
+						 	<a href="{% url 'web:logout' %}">logout</a>
+						 {% endif %}
+					 </li>
+				 </ul>
 				 </div>
 			 <div class="logo">
 				 <h3><a href="{% url 'web:index' %} ">ZOO SHOP</a></h3>
@@ -119,31 +129,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="clearfix"> </div>
 		 <div class="tab-grids">
 			 <div id="tab1" class="tab-grid1">
-				 <div class="product-grid">
-						<div class="more-product-info"><span>NEW</span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/dog_toy5.jpg' %}" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4 class="love-info">Игрушка для собак CHOMPER Into the Woods</h4>
-								<span class="item_price">429₽</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
+				 	{% for item in items %}
 
 					 <div class="product-grid">
 						 <div class="more-product-info"></div>
 						 <div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/dog_toy2.jpg' %}" class="img-responsive" alt=""/>
+							<img src="{% static 'images/'%}{{item.img_path}}" class="img-responsive" alt=""/>
 							<div class="b-wrapper">
 							<h4 class="b-animate b-from-left  b-delay03">
 
@@ -152,8 +143,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						 </div>
 						 <div class="product-info simpleCart_shelfItem">
 							 <div class="product-info-cust">
-								<h4 class="love-info">Игрушка для собак CHOMPER Канат 9" в ассортименте</h4>
-								<span class="item_price">129₽</span>
+								<h4 class="love-info">{{ item.name }}</h4>
+								<span class="item_price">{{ item.price }}₽</span>
 								<input type="text" class="item_quantity" value="1" />
 								<input type="button" class="item_add" value="ДОБАВИТЬ">
 							 </div>
@@ -161,97 +152,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						 </div>
 					 </div>
 
-					 <div class="product-grid">
-						<div class="more-product-info"></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/cat_toy3.jpg' %}" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
+				 	 {% endfor %}
 
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4>Игрушка для кошек CHOMPER Bright</h4>
-								<span class="item_price">179₽</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					 </div>
-
-					 <div class="product-grid">
-						<div class="more-product-info"></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/cat_toy6.jpg' %}" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4 class="love-info">Игрушка для кошек CHOMPER Wild At Heart </h4>
-								<span class="item_price">349₽</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					 </div>
-
-					 <div class="product-grid">
-						<div class="more-product-info"><span>NEW</span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/bird_toy3.jpg' %}" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4 class="love-info">Игрушка для птиц TRIXIE для попугая, деревянная на цепочке</h4>
-								<span class="item_price">203₽</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					 </div>
-
-					 <div class="product-grid">
-						<div class="more-product-info"></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/bird_toy1.jpg' %}" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4 class="love-info">Держатель для фруктов "Яблочко", 180/210*50мм</h4>
-								<span class="item_price">259₽</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
 					<div class="clearfix"></div>
 			 </div>
 <!-- Корма -->
 			 <div id="tab2" class="tab-grid2">
-				 <div class="product-grid">
-						<div class="more-product-info"></div>
+				 <div class="product-grid love-grid">
+						<div class="more-product"><span> </span></div>
 						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/cat_feed2.jpg' %}" class="img-responsive" alt=""/>
+							<img src="{% static 'images/cat_feed2.jpg' %}"class="img-responsive" alt=""/>
 							<div class="b-wrapper">
 							<h4 class="b-animate b-from-left  b-delay03">
 
@@ -260,19 +170,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="product-info simpleCart_shelfItem">
 							<div class="product-info-cust">
-								<h4>Корм для котят DUKE'S FARM утка</h4>
+								<h4 class="love-info">Корм для котят DUKE'S FARM, со вкусом утки</h4>
 								<span class="item_price">489₽</span>
 								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
+								<input type="button" class="item_add items" value="ДОБАВИТЬ">
 							</div>
 							<div class="clearfix"> </div>
 						</div>
 					</div>
 
-					 <div class="product-grid">
-						<div class="more-product-info"></div>
+					 <div class="product-grid love-grid">
+						<div class="more-product"><span> </span></div>
 						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/c2.jpg' %}" class="img-responsive" alt=""/>
+							<img src="{% static 'images/cat_feed3.jpg' %}"class="img-responsive" alt=""/>
 							<div class="b-wrapper">
 							<h4 class="b-animate b-from-left  b-delay03">
 
@@ -281,19 +191,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="product-info simpleCart_shelfItem">
 							<div class="product-info-cust">
-								<h4>NEWLOOK</h4>
-								<span class="item_price">$120.95</span>
+								<h4 class="love-info">Корм для котят DUKE'S FARM Утка, шпинат конс</h4>
+								<span class="item_price">119₽</span>
 								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
+								<input type="button" class="item_add items" value="ДОБАВИТЬ">
 							</div>
 							<div class="clearfix"> </div>
 						</div>
 					</div>
 
-					 <div class="product-grid">
-						<div class="more-product-info"><span>NEW</span></div>
+					 <div class="product-grid love-grid">
+						<div class="more-product"><span> </span></div>
 						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/c3.jpg' %}" class="img-responsive" alt=""/>
+							<img src="{% static 'images/dog_feed5.jpg' %}"class="img-responsive" alt=""/>
 							<div class="b-wrapper">
 							<h4 class="b-animate b-from-left  b-delay03">
 
@@ -302,19 +212,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="product-info simpleCart_shelfItem">
 							<div class="product-info-cust">
-								<h4>NEWLOOK</h4>
-								<span class="item_price">$187.95</span>
+								<h4 class="love-info">Корм для собак PROFINE говядина, печень конс.</h4>
+								<span class="item_price">155₽</span>
 								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
+								<input type="button" class="item_add items" value="ДОБАВИТЬ">
 							</div>
 							<div class="clearfix"> </div>
 						</div>
 					</div>
 
-					 <div class="product-grid">
-						<div class="more-product-info"><span>NEW</span></div>
+					 <div class="product-grid love-grid">
+						<div class="more-product"><span> </span></div>
 						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/c4.jpg' %}" class="img-responsive" alt=""/>
+							<img src="{% static 'images/dog_feed6.jpg' %}"class="img-responsive" alt=""/>
 							<div class="b-wrapper">
 							<h4 class="b-animate b-from-left  b-delay03">
 
@@ -323,40 +233,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="product-info simpleCart_shelfItem">
 							<div class="product-info-cust">
-								<h4>NEWLOOK</h4>
-								<span class="item_price">$187.95</span>
+								<h4 class="love-info">Корм для собак PROFINE лосось, курица конс.</h4>
+								<span class="item_price">155₽</span>
 								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					 </div>
-
-					 <div class="product-grid">
-						<div class="more-product-info"></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/c5.jpg' %}" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4>NEWLOOK</h4>
-								<span class="item_price">$187.95</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
+								<input type="button" class="item_add items" value="ДОБАВИТЬ">
 							</div>
 							<div class="clearfix"> </div>
 						</div>
 					</div>
 
-					 <div class="product-grid">
-						<div class="more-product-info"></div>
+					<div class="product-grid love-grid">
+						<div class="more-product"><span> </span></div>
 						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/c6.jpg' %}" class="img-responsive" alt=""/>
+							<img src="{% static 'images/bird_feed3.jpg' %}"class="img-responsive" alt=""/>
 							<div class="b-wrapper">
 							<h4 class="b-animate b-from-left  b-delay03">
 
@@ -365,10 +254,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="product-info simpleCart_shelfItem">
 							<div class="product-info-cust">
-								<h4>NEWLOOK</h4>
-								<span class="item_price">$180.95</span>
+								<h4 class="love-info">Корм для птиц RIO для волнистых попугайчиков 1 кг</h4>
+								<span class="item_price">209₽</span>
 								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
+								<input type="button" class="item_add items" value="ДОБАВИТЬ">
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+
+					<div class="product-grid love-grid">
+						<div class="more-product"><span> </span></div>
+						<div class="product-img b-link-stripe b-animate-go  thickbox">
+							<img src="{% static 'images/bird_feed4.jpg' %}"class="img-responsive" alt=""/>
+							<div class="b-wrapper">
+							<h4 class="b-animate b-from-left  b-delay03">
+
+							</h4>
+							</div>
+						</div>
+						<div class="product-info simpleCart_shelfItem">
+							<div class="product-info-cust">
+								<h4 class="love-info">Лакомство-игрушка для птиц RIO Кедровая шишка 1шт</h4>
+								<span class="item_price">197₽</span>
+								<input type="text" class="item_quantity" value="1" />
+								<input type="button" class="item_add items" value="ДОБАВИТЬ">
 							</div>
 							<div class="clearfix"> </div>
 						</div>

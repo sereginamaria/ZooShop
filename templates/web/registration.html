@@ -35,13 +35,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 <div class="container">
 		<div class="main-header">
 			 <div class="carting">
-				 <ul><li><a href="login.html"> LOGIN</a></li></ul>
-			 </div>
+				 <ul>
+					 <li>
+						 {% if not username %}
+						 	<a href="{% url 'web:login' %} "> LOGIN</a>
+						 {% else %}
+						 	<a>{{ username }}</a>
+						 	<a href="{% url 'web:logout' %}">logout</a>
+						 {% endif %}
+					 </li>
+				 </ul>
+				 </div>
 			 <div class="logo">
-				 <h3><a href="index.html">ZOO SHOP</a></h3>
+				 <h3><a href="{% url 'web:index' %} ">ZOO SHOP</a></h3>
 			 </div>
 			 <div class="box_1">
-				 <a href="cart.html"><h3>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)<img src="{% static 'images/cart.png' %}"alt=""/></h3></a>
+				 <a href="{% url 'web:cart' %} "><h3>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)<img src="{% static 'images/cart.png' %}"alt=""/></h3></a>
 
 
 			 </div>
@@ -52,17 +61,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 </div>
 	<div class="container-megamenu">
 		<ul class="megamenu skyblue">
-			<li class="grid"><a class="color1" href="index.html">Главная</a></li>
+			<li class="grid"><a class="color1" href="{% url 'web:index' %} ">Главная</a></li>
 			<li class=" grid"><a href="#">Товары</a>
 				<div class="megapanel">
 					<div class="row">
 						<div class="col1">
 							<div class="h_nav">
-																	<h4>Кошкам</h4>
+								<h4>Кошкам</h4>
 									<ul>
-										<li><a href="cats_toys.html">Игрушки</a></li>
-										<li><a href="cats_feed.html">Корм</a></li>
-										<li><a href="cats_acc.html">Аксессуары</a></li>
+										<li><a href="{% url 'web:cats_toys' %} ">Игрушки</a></li>
+										<li><a href="{% url 'web:cats_feed' %} ">Корм</a></li>
+										<li><a href="{% url 'web:cats_acc' %} ">Аксессуары</a></li>
 									</ul>
 								</div>
 							</div>
@@ -70,9 +79,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="h_nav">
 									<h4>Собакам</h4>
 									<ul>
-										<li><a href="dogs_toys.html">Игрушки</a></li>
-										<li><a href="dogs_feed.html">Корм</a></li>
-										<li><a href="dogs_acc.html">Аксессуары</a></li>
+										<li><a href="{% url 'web:dogs_toys' %} ">Игрушки</a></li>
+										<li><a href="{% url 'web:dogs_feed' %} ">Корм</a></li>
+										<li><a href="{% url 'web:dogs_acc' %} ">Аксессуары</a></li>
 									</ul>
 								</div>
 							</div>
@@ -80,9 +89,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="h_nav">
 									<h4>Птицам</h4>
 									<ul>
-										<li><a href="birds_toys.html">Игрушки</a></li>
-										<li><a href="birds_feed.html">Корм</a></li>
-										<li><a href="birds_acc.html">Аксессуары</a></li>
+										<li><a href="{% url 'web:birds_toys' %} ">Игрушки</a></li>
+										<li><a href="{% url 'web:birds_feed' %} ">Корм</a></li>
+										<li><a href="{% url 'web:birds_acc' %} ">Аксессуары</a></li>
 									</ul>
 								</div>
 							</div>
@@ -96,8 +105,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>-->
 				</div>
 			</li>
-			<li class="grid"><a href="about.html">О нас</a></li>
-			<li class="grid"><a href="ourshops.html">Наши магазины</a></li>
+			<li class="grid"><a href="{% url 'web:about' %} ">О нас</a></li>
+			<li class="grid"><a href="{% url 'web:ourshops' %} ">Наши магазины</a></li>
 		</ul>
 	</div>
 			  <div class="clearfix"></div> 
@@ -107,7 +116,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="registration-form">
 	 <div class="container">
 		 <ol class="breadcrumb">
-		  <li><a href="index.html">Главная</a></li>
+		  <li><a href="{% url 'web:index' %} ">Главная</a></li>
 		  <li class="active">Регистраация</li>
 		 </ol>
 		 <h2>Регистрация</h2>
@@ -122,7 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					 <ul>
 						 <li class="text-info">Фамилия: </li>
 						 <li><input type="text" value="" name="surname"></li>
-					 </ul>				 
+					 </ul>
 					<ul>
 						 <li class="text-info">Email: </li>
 						 <li><input type="text" value="" name="email"></li>
@@ -138,7 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					 <ul>
 						 <li class="text-info">Телефон:</li>
 						 <li><input type="text" value="" name="phone"></li>
-					 </ul>						
+					 </ul>
 					 <input type="submit" value="Зарегистрироваться">
 					 <p class="click">Нажимая эту кнопку, вы соглашаетесь с <a href="#">Политикой Конфеденциальности</a></p>
 				 </form>
@@ -157,7 +166,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--fotter-->
 <div class="fotter-logo">
 	 <div class="container">
-	 <div class="ftr-logo"><h3><a href="index.html">NEW FASHIONS</a></h3></div>
+	 <div class="ftr-logo"><h3><a href="{% url 'web:index' %} ">NEW FASHIONS</a></h3></div>
 	 <div class="ftr-info">
 	 <p>&copy; 2015 All Rights Reseverd Design by <a href="http://w3layouts.com/">W3layouts</a> </p>
 	</div>

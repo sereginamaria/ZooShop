@@ -34,8 +34,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 <div class="container">
 		  <div class="main-header">
 			 <div class="carting">
-				 <ul><li><a href="login"> LOGIN</a></li></ul>
-			 </div>
+				 <ul>
+					 <li>
+						 {% if not username %}
+						 	<a href="{% url 'web:login' %} "> LOGIN</a>
+						 {% else %}
+						 	<a>{{ username }}</a>
+						 	<a href="{% url 'web:logout' %}">logout</a>
+						 {% endif %}
+					 </li>
+				 </ul>
+				 </div>
 			 <div class="logo">
 				 <h3><a href="index">ZOO SHOP</a></h3>
 			 </div>
@@ -110,13 +119,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  <li class="active">Авторизация</li>
 		 </ol>
 		 <h2>Вход</h2>
-		 <div class="col-md-6 log">			 
-
-				 <form>
+		 <div class="col-md-6 log">
+				 <form  action="{% url 'web:login' %}" method="post">
+					 {% csrf_token %}
 					 <h5>Логин:</h5>
-					 <input type="text" value="">
+					 <input type="text" value="" name="username">
 					 <h5>Пароль:</h5>
-					 <input type="password" value="">					
+					 <input type="password" value="" name="password">
 					 <input type="submit" value="Login">
 					  <!--<a href="#">Забыли пароль?</a>-->
 				 </form>				 
@@ -133,7 +142,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--fotter-->
 <div class="fotter-logo">
 	 <div class="container">
-	 <div class="ftr-logo"><h3><a href="index">ZOO SHOP</a></h3></div>
+	 <div class="ftr-logo"><h3><a href="{% url 'web:index' %}">ZOO SHOP</a></h3></div>
 	 <div class="ftr-info">
 	 <p>&copy; 2015 All Rights Reseverd Design by <a href="http://w3layouts.com/">W3layouts</a> </p>
 	</div>

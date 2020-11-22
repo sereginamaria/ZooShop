@@ -1,60 +1,64 @@
 from django.db.models import *
+from django.contrib.auth.models import User
 
 
-class Shops(Model):
+class Shop(Model):
     shop_id = AutoField(primary_key=True)
     address = TextField()
     employees = ForeignKey('Employee', on_delete=CASCADE)
 
 
-class Employee(Model):
-    employee_id = AutoField(primary_key=True)
-    name = CharField(max_length=50)
-    surname = CharField(max_length=50)
-    middle_name = CharField(max_length=50)  # отчество
-    role = CharField(max_length=100)  # должность
+class Employee(User):
+    class Meta:
+        verbose_name = 'Employee'
+
     phone = CharField(max_length=11)
-    e_mail = CharField(max_length=50)
-    shop_id = AutoField(primary_key=True)
+    shop_id = ForeignKey('Shop', on_delete=CASCADE)
 
 
-class Clients(Model):
-    client_id = AutoField(primary_key=True)
-    name = CharField(max_length=50)
-    surname = CharField(max_length=50)
+class Client(User):
+    class Meta:
+        verbose_name = 'Client'
     phone = CharField(max_length=11)
-    e_mail = CharField(max_length=50)
 
 
-class Providers(Model):
+class Provider(Model):
     provider_id = AutoField(primary_key=True)
     company_name = CharField(max_length=100)
     company_address = CharField(max_length=100)
     phone = CharField(max_length=11)
 
 
-class Products(Model):
+class Product(Model):
     product_id = AutoField(primary_key=True)
-    provider_id = AutoField(primary_key=True)
+    provider_id = ForeignKey('Provider', on_delete=CASCADE)
     product_name = CharField(max_length=100)
-    price = IntegerField(max_length=10)
+    price = IntegerField()
 
 
 class Accounting(Model):
-    product_id = AutoField(primary_key=True)
-    provider_id = AutoField(primary_key=True)
-    employee_id = AutoField(primary_key=True)
-    shop_id = AutoField(primary_key=True)
+    product_id = ForeignKey('Product', on_delete=CASCADE)
+    provider_id = ForeignKey('Provider', on_delete=CASCADE)
+    employee_id = ForeignKey('Employee', on_delete=CASCADE)
+    shop_id = ForeignKey('Shop', on_delete=CASCADE)
     product_name = CharField(max_length=100)
     date = DateField()
     account_number = IntegerField()
 
 
-class Sales(Model):
-    product_id = AutoField(primary_key=True)
-    employee_id = AutoField(primary_key=True)
-    shop_id = AutoField(primary_key=True)
+class Sale(Model):
+    product_id = ForeignKey('Product', on_delete=CASCADE)
+    employee_id = ForeignKey('Employee', on_delete=CASCADE)
+    shop_id = ForeignKey('Shop', on_delete=CASCADE)
     product_name = CharField(max_length=100)
     date = DateField()
     account_number = IntegerField()  # номер счета
     quantity = IntegerField()
+
+
+class Item(Model):
+    id = AutoField(primary_key=True)
+    name = TextField()
+    price = IntegerField()
+    amount = IntegerField()
+    img_path = CharField(max_length=150)
