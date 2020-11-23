@@ -158,260 +158,59 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 </div>
 <!-- Корма -->
 			 <div id="tab2" class="tab-grid2">
-				 <div class="product-grid love-grid">
-						<div class="more-product"><span> </span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/cat_feed2.jpg' %}"class="img-responsive" alt=""/>
+				 	{% for item in items1 %}
+
+					 <div class="product-grid">
+						 <div class="more-product-info"></div>
+						 <div class="product-img b-link-stripe b-animate-go  thickbox">
+							<img src="{% static 'images/'%}{{item.img_path}}" class="img-responsive" alt=""/>
 							<div class="b-wrapper">
 							<h4 class="b-animate b-from-left  b-delay03">
 
 							</h4>
 							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4 class="love-info">Корм для котят DUKE'S FARM, со вкусом утки</h4>
-								<span class="item_price">489₽</span>
+						 </div>
+						 <div class="product-info simpleCart_shelfItem">
+							 <div class="product-info-cust">
+								<h4 class="love-info">{{ item.name }}</h4>
+								<span class="item_price">{{ item.price }}₽</span>
 								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add items" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
+								<input type="button" class="item_add" value="ДОБАВИТЬ">
+							 </div>
+							 <div class="clearfix"> </div>
+						 </div>
+					 </div>
 
-					 <div class="product-grid love-grid">
-						<div class="more-product"><span> </span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/cat_feed3.jpg' %}"class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
+				 	 {% endfor %}
 
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4 class="love-info">Корм для котят DUKE'S FARM Утка, шпинат конс</h4>
-								<span class="item_price">119₽</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add items" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
-
-					 <div class="product-grid love-grid">
-						<div class="more-product"><span> </span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/dog_feed5.jpg' %}"class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4 class="love-info">Корм для собак PROFINE говядина, печень конс.</h4>
-								<span class="item_price">155₽</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add items" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
-
-					 <div class="product-grid love-grid">
-						<div class="more-product"><span> </span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/dog_feed6.jpg' %}"class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4 class="love-info">Корм для собак PROFINE лосось, курица конс.</h4>
-								<span class="item_price">155₽</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add items" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
-
-					<div class="product-grid love-grid">
-						<div class="more-product"><span> </span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/bird_feed3.jpg' %}"class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4 class="love-info">Корм для птиц RIO для волнистых попугайчиков 1 кг</h4>
-								<span class="item_price">209₽</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add items" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
-
-					<div class="product-grid love-grid">
-						<div class="more-product"><span> </span></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/bird_feed4.jpg' %}"class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4 class="love-info">Лакомство-игрушка для птиц RIO Кедровая шишка 1шт</h4>
-								<span class="item_price">197₽</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add items" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
 					<div class="clearfix"></div>
 			 </div>
 
 			 <div id="tab3" class="tab-grid3">
-				  <div class="product-grid">
-						<div class="more-product-info"></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/bs3.jpg' %}" class="img-responsive" alt=""/>
+				 {% for item in items2 %}
+
+					 <div class="product-grid">
+						 <div class="more-product-info"></div>
+						 <div class="product-img b-link-stripe b-animate-go  thickbox">
+							<img src="{% static 'images/'%}{{item.img_path}}" class="img-responsive" alt=""/>
 							<div class="b-wrapper">
 							<h4 class="b-animate b-from-left  b-delay03">
 
 							</h4>
 							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4>ROADSTER</h4>
-								<span class="item_price">$160.95</span>
+						 </div>
+						 <div class="product-info simpleCart_shelfItem">
+							 <div class="product-info-cust">
+								<h4 class="love-info">{{ item.name }}</h4>
+								<span class="item_price">{{ item.price }}₽</span>
 								<input type="text" class="item_quantity" value="1" />
 								<input type="button" class="item_add" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
+							 </div>
+							 <div class="clearfix"> </div>
+						 </div>
 					 </div>
 
-					 <div class="product-grid">
-						<div class="more-product-info"></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/bs5.jpg' %}" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4>RED CHECKS</h4>
-								<span class="item_price">$187.95</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
-
-					 <div class="product-grid">
-						<div class="more-product-info"></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/c5.jpg' %}" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4>NEWLOOK</h4>
-								<span class="item_price">$187.95</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					 </div>
-
-					 <div class="product-grid">
-						<div class="more-product-info"></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/c4.jpg' %}" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4>MANGO</h4>
-								<span class="item_price">$187.95</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					 </div>
-
-					 <div class="product-grid">
-						<div class="more-product-info"></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/c3.jpg' %}" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4>SISLEY</h4>
-								<span class="item_price">$187.95</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					 </div>
-
-					 <div class="product-grid">
-						<div class="more-product-info"></div>
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src="{% static 'images/bs1.jpg' %}" class="img-responsive" alt=""/>
-							<div class="b-wrapper">
-							<h4 class="b-animate b-from-left  b-delay03">
-
-							</h4>
-							</div>
-						</div>
-						<div class="product-info simpleCart_shelfItem">
-							<div class="product-info-cust">
-								<h4>ROADSTER</h4>
-								<span class="item_price">$187.95</span>
-								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add" value="ДОБАВИТЬ">
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
+				 	 {% endfor %}
 				   <div class="clearfix"></div>
 			 </div>
 		 </div>

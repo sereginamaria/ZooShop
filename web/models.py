@@ -8,18 +8,21 @@ class Shop(Model):
     employees = ForeignKey('Employee', on_delete=CASCADE)
 
 
-class Employee(User):
+class Client(Model):
+    class Meta:
+        verbose_name = 'Client'
+
+    phone = CharField(max_length=11)
+    user = OneToOneField(User, on_delete=CASCADE)
+
+
+class Employee(Model):
     class Meta:
         verbose_name = 'Employee'
 
     phone = CharField(max_length=11)
     shop_id = ForeignKey('Shop', on_delete=CASCADE)
-
-
-class Client(User):
-    class Meta:
-        verbose_name = 'Client'
-    phone = CharField(max_length=11)
+    user = OneToOneField(User, on_delete=CASCADE)
 
 
 class Provider(Model):

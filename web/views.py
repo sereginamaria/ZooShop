@@ -11,14 +11,23 @@ import os
 
 def index(request):
     # limit 10
-    items = Item.objects.all().filter(~Q(amount=0))[:6]
+    items = Item.objects.filter(img_path__contains='toy')
+    random_items = random.sample(list(items), 6)
+
+    items1 = Item.objects.filter(img_path__contains='feed')
+    random_items1 = random.sample(list(items1), 6)
+
+    items2 = Item.objects.filter(img_path__contains='acc')
+    random_items2 = random.sample(list(items2), 6)
 
     username = None
     if request.user.is_authenticated:
         username = request.user.username
 
     context = {'username': username,
-               'items': items}
+               'items': random_items,
+               'items1': random_items1,
+               'items2': random_items2,}
     return render(request, 'web/index.html', context=context)
 
 
